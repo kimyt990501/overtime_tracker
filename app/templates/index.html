@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>초과근무 기록기</title>
+</head>
+<body>
+    <h1>초과근무 기록</h1>
+    <form method="post" action="/log">
+        <label>날짜 (YYYY-MM-DD):</label>
+        <input type="text" name="date_str" required><br>
+        <label>출근 시: </label>
+        <input type="number" name="start_hour" min="0" max="23" required> :
+        <input type="number" name="start_minute" min="0" max="59" required><br>
+        <label>퇴근 시: </label>
+        <input type="number" name="end_hour" min="0" max="23" required> :
+        <input type="number" name="end_minute" min="0" max="59" required><br>
+        <button type="submit">기록하기</button>
+    </form>
+
+    <h2>월별 초과근무 합산</h2>
+    <form method="get" action="">
+        <label>연도:</label>
+        <input type="number" name="year" value="2025" required>
+        <label>월:</label>
+        <input type="number" name="month" value="3" required>
+        <button type="submit" formaction="/summary/">요약 보기</button>
+    </form>
+
+    {% if message %}
+    <p><strong>{{ message }}</strong></p>
+    {% endif %}
+</body>
+</html>
