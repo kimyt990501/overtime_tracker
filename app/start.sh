@@ -11,4 +11,4 @@ done
 echo "DB 연결 성공! FastAPI 시작합니다..."
 
 # FastAPI 앱 실행
-exec uvicorn main:app --host 0.0.0.0 --port 8888
+exec uvicorn main:app --host 0.0.0.0 --port 8888 --reload

@@ -1,33 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <title>초과근무 기록기</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <h1>초과근무 기록</h1>
-    <form method="post" action="/log">
-        <label>날짜 (YYYY-MM-DD):</label>
-        <input type="text" name="date_str" required><br>
-        <label>출근 시: </label>
-        <input type="number" name="start_hour" min="0" max="23" required> :
-        <input type="number" name="start_minute" min="0" max="59" required><br>
-        <label>퇴근 시: </label>
-        <input type="number" name="end_hour" min="0" max="23" required> :
-        <input type="number" name="end_minute" min="0" max="59" required><br>
-        <button type="submit">기록하기</button>
-    </form>
+    <div class="container">
+        <div class="left">
+            <h2>📝 기록 입력</h2>
+            <form method="post" action="/log">
+                <label>날짜 (YYYY-MM-DD):</label>
+                <input type="text" name="date_str" required>
 
-    <h2>월별 초과근무 합산</h2>
-    <form method="get" action="">
-        <label>연도:</label>
-        <input type="number" name="year" value="2025" required>
-        <label>월:</label>
-        <input type="number" name="month" value="3" required>
-        <button type="submit" formaction="/summary/">요약 보기</button>
-    </form>
+                <label>출근 시:</label>
+                <div class="time-inputs">
+                    <input type="number" name="start_hour" min="0" max="23" required> :
+                    <input type="number" name="start_minute" min="0" max="59" required>
+                </div>
 
-    {% if message %}
-    <p><strong>{{ message }}</strong></p>
-    {% endif %}
+                <label>퇴근 시:</label>
+                <div class="time-inputs">
+                    <input type="number" name="end_hour" min="0" max="23" required> :
+                    <input type="number" name="end_minute" min="0" max="59" required>
+                </div>
+
+                <button type="submit">기록하기</button>
+            </form>
+
+            <h2>📊 요약 조회</h2>
+            <form method="get" action="/summary/">
+                <label>연도:</label>
+                <input type="number" name="year" value="2025" required>
+                <label>월:</label>
+                <input type="number" name="month" value="3" required>
+                <button type="submit">요약 보기</button>
+            </form>
+
+            {% if message %}
+            <p class="message"><strong>{{ message }}</strong></p>
+            {% endif %}
+        </div>
+
+        <div class="right">
+            <h2>📋 기록 보기 (필터)</h2>
+            <form method="get" action="/" class="filter-form">
+                <label>연도:</label>
+                <input type="number" name="year" value="{{ selected_year or now.year }}" required>
+                <label>월:</label>
+                <div class="time-inputs">
+                    <input type="number" name="month" value="{{ selected_month or now.month }}" required>
+                    <button type="submit">📅 필터 적용</button>
+                </div>
+            </form>
+
+            <div class="log-header">
+                <span>날짜</span>
+                <span>출근</span>
+                <span>퇴근</span>
+                <span>초과근무</span>
+            </div>
+            <div>
+                {% for log in logs %}
+                <a href="/edit/{{ log.date }}" class="log-card log-link">
+                    <span>{{ log.date }}</span>
+                    <span>{{ log.start_time.strftime('%H:%M') if log.start_time else '-' }}</span>
+                    <span>{{ log.end_time.strftime('%H:%M') if log.end_time else '-' }}</span>
+                    <span>
+                        {% set m = log.overtime_hours * 60 %}
+                        {{ (m // 60)|int }}시간 {{ (m % 60)|int }}분
+                    </span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

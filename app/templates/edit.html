@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ entry.date }} 기록 수정</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="edit-container">
+        <h1>🛠 {{ entry.date }} 기록 수정</h1>
+        <form method="post">
+            <label>출근 시:</label>
+            <div class="time-inputs">
+                <input type="number" name="start_hour" min="0" max="23" value="{{ entry.start_time.hour }}" required> :
+                <input type="number" name="start_minute" min="0" max="59" value="{{ entry.start_time.minute }}" required>
+            </div>
+
+            <label>퇴근 시:</label>
+            <div class="time-inputs">
+                <input type="number" name="end_hour" min="0" max="23" value="{{ entry.end_time.hour }}" required> :
+                <input type="number" name="end_minute" min="0" max="59" value="{{ entry.end_time.minute }}" required>
+            </div>
+
+            <button type="submit">💾 수정하기</button>
+        </form>
+
+        <a href="/">← 홈으로 돌아가기</a>
+    </div>
+</body>
+</html>
