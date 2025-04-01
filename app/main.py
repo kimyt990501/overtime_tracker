@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta, date, timezone
 from database import SessionLocal, engine
 from models import Base, WorkLog
 
@@ -10,6 +10,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+KST = timezone(timedelta(hours=9))
 
 @app.get("/", response_class=HTMLResponse)
 def read_form(request: Request, year: int = None, month: int = None):
@@ -29,7 +30,7 @@ def read_form(request: Request, year: int = None, month: int = None):
         "logs": logs,
         "selected_year": year,
         "selected_month": month,
-        "now": datetime.now()
+        "now": datetime.now(KST)
     })
 
 @app.post("/log", response_class=HTMLResponse)
@@ -77,7 +78,7 @@ def log_overtime(
             "request": request,
             "message": f"{work_date} 기록 완료!",
             "logs": logs,
-            "now": datetime.now(),
+            "now": datetime.now(KST),
         })
 
     except Exception as e:
@@ -115,7 +116,7 @@ def get_monthly_summary(request: Request, year: int = 2025, month: int = 3):
         "message": f"{year}년 {month}월 총 초과근무: {overtime_hours}시간 {overtime_minutes}분",
         "selected_year": year,
         "selected_month": month,
-        "now": datetime.now()
+        "now": datetime.now(KST)
     })
     
 @app.get("/logs", response_class=HTMLResponse)
