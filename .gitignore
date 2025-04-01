@@ -3,6 +3,9 @@ timetracker/
 venv/
 .env/
 
+# 환경 설정 파일 제외
+.env
+
 # 로그파일 제외
 *.log
 
