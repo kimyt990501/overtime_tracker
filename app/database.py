@@ -6,7 +6,7 @@ import os
 # MySQL 접속 URL
 # SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://user:0000@localhost/overtime_db"
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./worklog.db") 
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={})
 # SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
