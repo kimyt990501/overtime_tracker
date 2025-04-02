@@ -12,17 +12,17 @@
             <h2>📝 기록 입력</h2>
             <form method="post" action="/log">
                 <label>날짜 (YYYY-MM-DD):</label>
-                <input type="text" name="date_str" required>
+                <input type="text" name="date_str" value="{{ date_str or now.strftime('%Y-%m-%d') }}" required>
 
                 <label>출근 시:</label>
                 <div class="time-inputs">
-                    <input type="number" name="start_hour" min="0" max="23" required> :
+                    <input type="number" name="start_hour" value="{{ start_hour or 8 }}" min="0" max="23" required> :
                     <input type="number" name="start_minute" min="0" max="59" required>
                 </div>
 
                 <label>퇴근 시:</label>
                 <div class="time-inputs">
-                    <input type="number" name="end_hour" min="0" max="23" required> :
+                    <input type="number" name="end_hour" value="{{ end_hour or 18 }}" min="0" max="23" required> :
                     <input type="number" name="end_minute" min="0" max="59" required>
                 </div>
 
@@ -32,9 +32,9 @@
             <h2>📊 요약 조회</h2>
             <form method="get" action="/summary/">
                 <label>연도:</label>
-                <input type="number" name="year" value="2025" required>
+                <input type="number" name="year" value="{{ selected_year or now.year }}" required>
                 <label>월:</label>
-                <input type="number" name="month" value="3" required>
+                <input type="number" name="month" value="{{ selected_month or now.month }}" required>
                 <button type="submit">요약 보기</button>
             </form>
 
