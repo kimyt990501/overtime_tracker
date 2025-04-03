@@ -28,6 +28,7 @@ services:
       - "3307:3306"
     volumes:
       - dbdata:/var/lib/mysql
+    restart: always
 
 volumes:
   dbdata:
