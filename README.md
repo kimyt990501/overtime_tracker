@@ -44,10 +44,10 @@
 
 ### ▶️ 클러스터 및 앱 자동 실행
 
-\`\`\`bash
+```bash
 chmod +x start_k8s.sh
 ./start_k8s.sh
-\`\`\`
+```
 
 **스크립트가 수행하는 작업:**
 
@@ -82,13 +82,13 @@ chmod +x start_k8s.sh
 
 ### 🔨 이미지 빌드 & 푸시
 
-\`\`\`bash
+```bash
 VERSION=v1.0.0
 
 docker build -t overtime_tracker-web .
 docker tag overtime_tracker-web kimyt990501/overtime-web:$VERSION
 docker push kimyt990501/overtime-web:$VERSION
-\`\`\`
+```
 
 ---
 
@@ -96,29 +96,29 @@ docker push kimyt990501/overtime-web:$VERSION
 
 **`overtime_tracker_k8s.yaml` 내 이미지 태그 수정:**
 
-\`\`\`yaml
+```yaml
 containers:
   - name: web
     image: kimyt990501/overtime-web:v1.0.0
-\`\`\`
+```
 
 **배포 적용:**
 
-\`\`\`bash
+```bash
 minikube kubectl apply -f overtime_tracker_k8s.yaml
-\`\`\`
+```
 
 **또는 롤링 리스타트 방식:**
 
-\`\`\`bash
+```bash
 minikube kubectl rollout restart deploy/web -n overtime-app
-\`\`\`
+```
 
 ---
 
 ## 🗂️ 프로젝트 구조
 
-\`\`\`text
+```text
 overtime_tracker/
 ├── app/
 │   ├── main.py                 # FastAPI 진입점
@@ -131,7 +131,7 @@ overtime_tracker/
 ├── overtime_tracker_k8s.yaml   # Kubernetes 리소스 정의
 ├── start_k8s.sh                # Minikube 자동 실행 스크립트
 └── README.md                   # 프로젝트 설명 파일
-\`\`\`
+```
 
 ---
 
@@ -153,6 +153,6 @@ overtime_tracker/
 
 ## 📝 라이선스
 
-\`\`\`
+```
 MIT License
-\`\`\`
+```
