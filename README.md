@@ -11,13 +11,13 @@
 
 ## 기술 스택
 
-| 구성 요소       | 기술                     |
-|----------------|--------------------------|
-| 백엔드/프론트   | FastAPI (Python 3.8)     |
-| 데이터베이스    | MySQL 8                  |
-| 컨테이너화      | Docker                   |
-| 오케스트레이션 | Kubernetes (Minikube)    |
-| 자동화 스크립트 | Shell Script + DockerHub |
+| 구성 요소       | 기술                       |
+|----------------|----------------------------|
+| 백엔드/프론트   | ![FastAPI](https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fastapi.svg?sanitize=true&color=white&height=16) FastAPI (Python 3.8) |
+| 데이터베이스    | ![MySQL](https://img.icons8.com/color/20/000000/mysql-logo.png) MySQL 8 |
+| 컨테이너화      | ![Docker](https://img.icons8.com/color/20/000000/docker.png) Docker |
+| 오케스트레이션 | ![Kubernetes](https://img.icons8.com/color/20/000000/kubernetes.png) Kubernetes (Minikube) |
+| 자동화 스크립트 | ![Shell](https://img.icons8.com/ios-filled/20/000000/console.png) Shell Script + ![DockerHub](https://img.icons8.com/fluency/20/000000/docker.png) DockerHub |
 
 ---
 
