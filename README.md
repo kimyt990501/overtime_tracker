@@ -13,7 +13,7 @@
 
 | 구성 요소       | 기술 |
 |----------------|-------|
-| 백엔드/프론트   | <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fastapi.svg" height="20"> FastAPI (Python 3.8) |
+| 백엔드/프론트   | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" height="20"> FastAPI (Python 3.8) |
 | 데이터베이스    | <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" height="20"> MySQL 8 |
 | 컨테이너화      | <img src="https://img.icons8.com/color/48/000000/docker.png" height="20"> Docker |
 | 오케스트레이션 | <img src="https://img.icons8.com/color/48/000000/kubernetes.png" height="20"> Kubernetes (Minikube) |
