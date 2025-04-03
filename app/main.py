@@ -5,6 +5,9 @@ from fastapi.staticfiles import StaticFiles
 from datetime import datetime, timedelta, date, timezone
 from database import SessionLocal, engine
 from models import Base, WorkLog
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
