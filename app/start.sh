@@ -3,7 +3,7 @@
 echo "DB가 준비될 때까지 기다리는 중..."
 
 # MySQL 연결될 때까지 반복 시도
-until mysqladmin ping -h db -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; do
+until mysqladmin ping -h mysql -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; do
   echo "아직 DB가 안 됐어요... 2초 뒤 재시도"
   sleep 2
 done
