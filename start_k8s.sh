@@ -29,7 +29,7 @@ done
 echo "FastAPI 서버 응답 확인됨! 포트포워딩 시작"
 
 echo "웹 포트포워딩 시작 (localhost:8888)..."
-nohup minikube kubectl -- port-forward svc/web 8888:8888 -n overtime-app > web.log 2>&1 &
+nohup minikube kubectl -- port-forward svc/web 8888:8888 -n overtime-app --address 0.0.0.0 > web.log 2>&1 &
 sleep 2
 
 echo "🛢 MySQL 포트포워딩 시작 (localhost:13306)..."
