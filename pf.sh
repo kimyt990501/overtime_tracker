@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export MINIKUBE_HOME=/home/kimyt990501
+export KUBECONFIG=/home/kimyt990501/.kube/config
+
 echo "포트포워딩용 스크립트 실행 중..."
 
 echo "파드 상태:"
