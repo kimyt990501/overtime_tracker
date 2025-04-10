@@ -129,7 +129,7 @@ overtime_tracker/
 ├── docker-compose.yaml         # 로컬 개발용 Docker 구성
 ├── overtime_tracker_k8s.yaml   # Kubernetes 리소스 정의
 ├── start_k8s.sh                # Minikube 자동 실행 스크립트
-└── README.md                   # 프로젝트 설명 파일
+└── README.md                   # 프로젝트 설명 파일  
 ```
 
 ---
